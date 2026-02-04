@@ -3,59 +3,71 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Максим — Ray-Ban • Garmin • Саратов</title>
+<title>Максим • Ray-Ban • Garmin • Саратов</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
   html { scroll-behavior: smooth; }
-  body { background:#0a0f23; color:#fff; line-height:1.5; overflow-x:hidden; }
+  body { background:#0a0f23; color:#fff; overflow-x:hidden; }
 
   a { text-decoration:none; color:inherit; }
 
-  header, section, footer { width:100%; padding:60px 20px; }
-
   /* Hero */
-  header { display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; text-align:center; background: linear-gradient(135deg, #0a0f23, #141b36); }
-  h1 { font-size:2.8rem; font-weight:700; margin-bottom:15px; background: linear-gradient(90deg, #4da6ff, #ff7acc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-  h2 { font-size:1.6rem; margin-bottom:25px; color:#c0c0c0; }
-  button { background:#1d2a55; color:#fff; border:none; padding:15px 30px; font-size:1.2rem; border-radius:12px; cursor:pointer; transition:0.3s; }
-  button:hover { background:#2b3b7c; }
-  .btn-primary { margin-bottom:15px; }
+  header { display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; text-align:center; background: linear-gradient(135deg, #0a0f23, #141b36); position:relative; overflow:hidden; }
+  header::before {
+    content:'';
+    position:absolute; top:0; left:0; width:100%; height:100%;
+    background: radial-gradient(circle at 50% 50%, rgba(77,166,255,0.2), transparent 70%);
+    animation: pulse 10s infinite alternate;
+    z-index:0;
+  }
+  @keyframes pulse { 0% {transform:scale(1);} 50% {transform:scale(1.2);} 100% {transform:scale(1);} }
+
+  header h1 { font-size:3rem; font-weight:700; margin-bottom:15px; z-index:1; position:relative; background: linear-gradient(90deg, #4da6ff, #ff7acc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  header h2 { font-size:1.6rem; margin-bottom:25px; z-index:1; position:relative; color:#c0c0c0; }
+  header p { font-size:1rem; margin-bottom:30px; z-index:1; position:relative; color:#aaa; }
+
+  header button { background:#1d2a55; color:#fff; border:none; padding:15px 30px; font-size:1.2rem; border-radius:12px; cursor:pointer; transition:0.3s; z-index:1; position:relative; margin-bottom:10px; }
+  header button:hover { background:#2b3b7c; }
   .btn-secondary { background:#0a0f23; border:1px solid #fff; }
 
   /* Products */
-  .products { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; margin-top:40px; }
-  .product-card { background:#141b36; border-radius:15px; overflow:hidden; cursor:pointer; transition:0.5s; opacity:0; transform: translateY(40px); }
+  section { padding:80px 20px; }
+  .products { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:25px; margin-top:40px; }
+  .product-card { background:#141b36; border-radius:20px; overflow:hidden; cursor:pointer; transition:0.5s; opacity:0; transform:translateY(50px); box-shadow:0 5px 20px rgba(0,0,0,0.3); }
   .product-card.visible { opacity:1; transform:translateY(0); }
-  .product-card:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(0,0,0,0.5); }
-  .product-card img { width:100%; display:block; }
+  .product-card:hover { transform:translateY(-5px); box-shadow:0 15px 40px rgba(0,0,0,0.5); }
+  .product-card img { width:100%; display:block; transition: transform 0.5s; }
+  .product-card:hover img { transform:scale(1.05); }
   .product-info { padding:20px; }
   .product-info h3 { font-size:1.2rem; margin-bottom:10px; }
   .product-info p { font-size:0.9rem; color:#aaa; }
 
   /* Why Telegram */
   .reasons { display:flex; flex-direction:column; gap:15px; max-width:600px; margin:0 auto; }
-  .reason { background:#1b2345; padding:20px; border-radius:12px; text-align:center; transition:0.3s; opacity:0; transform: translateY(40px); }
+  .reason { background:#1b2345; padding:25px; border-radius:15px; text-align:center; font-weight:500; font-size:1rem; transition:0.5s; opacity:0; transform:translateY(50px); }
   .reason.visible { opacity:1; transform:translateY(0); }
 
   /* Guides */
-  .guides { display:flex; flex-direction:column; gap:20px; max-width:600px; margin:0 auto; }
-  .guide { background:#1b2345; padding:20px; border-radius:12px; opacity:0; transform: translateY(40px); transition:0.5s; }
+  .guides { display:flex; flex-direction:column; gap:25px; max-width:600px; margin:0 auto; }
+  .guide { background:#1b2345; padding:25px; border-radius:15px; opacity:0; transform:translateY(50px); transition:0.5s; }
   .guide.visible { opacity:1; transform:translateY(0); }
-  .guide a { display:inline-block; margin-top:10px; padding:10px 20px; background:#2b3b7c; border-radius:10px; transition:0.3s; }
+  .guide a { display:inline-block; margin-top:10px; padding:12px 25px; background:#2b3b7c; border-radius:12px; transition:0.3s; }
   .guide a:hover { background:#3c4d9c; }
 
   /* Final CTA */
   .final-cta { text-align:center; padding:80px 20px; }
-  .final-cta button { font-size:1.4rem; padding:20px 40px; }
+  .final-cta button { font-size:1.5rem; padding:20px 45px; border-radius:15px; background:#4da6ff; color:#fff; transition:0.3s; }
+  .final-cta button:hover { background:#3c7ccc; }
+  .final-cta p { margin-top:20px; font-size:0.9rem; color:#aaa; }
 
   footer { text-align:center; font-size:0.9rem; color:#777; padding:40px 20px; }
 
   /* Sticky Telegram button */
   @media (max-width:768px) {
-    .sticky-telegram { position:fixed; bottom:20px; right:20px; z-index:100; box-shadow:0 4px 15px rgba(0,0,0,0.3); }
+    .sticky-telegram { position:fixed; bottom:20px; right:20px; z-index:100; box-shadow:0 5px 20px rgba(0,0,0,0.4); }
   }
 </style>
 </head>
@@ -65,32 +77,32 @@
   <h1>Максим</h1>
   <h2>Ray-Ban • Garmin • Саратов</h2>
   <p>Все покупки и консультации — через Telegram</p>
-  <button class="btn-primary" onclick="window.location.href='https://t.me/maxteamsell'">Перейти в Telegram</button>
+  <button onclick="window.location.href='https://t.me/maxteamsell'">Перейти в Telegram</button>
   <button class="btn-secondary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Смотреть товары</button>
 </header>
 
 <section id="products">
-  <h2 style="text-align:center; margin-bottom:40px;">Наши топовые гаджеты</h2>
+  <h2 style="text-align:center; margin-bottom:40px; font-size:2rem;">Топовые гаджеты</h2>
   <div class="products">
     <div class="product-card" onclick="window.location.href='https://t.me/maxteamsell'">
       <img src="https://contents.mediadecathlon.com/m21818599/k$f946d0c0493982b8284c5b904b46100c/rayban-meta-wayfarer-gen-1-black-g15-green-l-parallel-import-ray-ban-ac9c1362-e9db-4a7c-8ddc-24d7189430d0.jpg" alt="Ray-Ban Meta">
       <div class="product-info">
         <h3>Ray-Ban Meta</h3>
-        <p>Умные очки с камерой и ИИ. Идеальны для контента и повседневной жизни.</p>
+        <p>Умные очки с камерой и ИИ. Идеально для контента и повседневной жизни.</p>
       </div>
     </div>
     <div class="product-card" onclick="window.location.href='https://t.me/maxteamsell'">
-      <img src="https://contents.mediadecathlon.com/m21818599/k$f946d0c0493982b8284c5b904b46100c/rayban-meta-wayfarer-gen-1-black-g15-green-l-parallel-import-ray-ban-ac9c1362-e9db-4a7c-8ddc-24d7189430d0.jpg" alt="Ray-Ban Meta">
+      <img src="https://contents.mediadecathlon.com/m21818599/k$f946d0c0493982b8284c5b904b46100c/rayban-meta-wayfarer-gen-1-black-g15-green-l-parallel-import-ray-ban-ac9c1362-e9db-4a7c-8ddc-24d7189430d0.jpg" alt="Garmin">
       <div class="product-info">
         <h3>Garmin Smart</h3>
-        <p>Современные умные часы Garmin для спорта и повседневной жизни.</p>
+        <p>Умные часы Garmin для спорта, работы и повседневной жизни.</p>
       </div>
     </div>
   </div>
 </section>
 
 <section id="telegram">
-  <h2 style="text-align:center; margin-bottom:30px;">Почему Telegram</h2>
+  <h2 style="text-align:center; margin-bottom:30px; font-size:2rem;">Почему Telegram</h2>
   <div class="reasons">
     <div class="reason">Быстрая поддержка и ответы на вопросы</div>
     <div class="reason">Всегда доступно для покупки и консультации</div>
@@ -99,11 +111,11 @@
 </section>
 
 <section id="guides">
-  <h2 style="text-align:center; margin-bottom:30px;">Гайды и загрузки Ray-Ban Meta</h2>
+  <h2 style="text-align:center; margin-bottom:30px; font-size:2rem;">Гайды Ray-Ban Meta</h2>
   <div class="guides">
     <div class="guide">
       <h3>Инструкция по установке</h3>
-      <p>Подробная инструкция по настройке и использованию очков Ray-Ban Meta.</p>
+      <p>Подробная настройка и использование очков Ray-Ban Meta.</p>
       <a href="#">Скачать APK</a>
     </div>
     <div class="guide">
@@ -117,8 +129,8 @@
 <section class="final-cta">
   <h2>Готовы к покупке?</h2>
   <button onclick="window.location.href='https://t.me/maxteamsell'">Перейти в Telegram</button>
-  <p style="margin-top:20px; font-size:0.9rem; color:#aaa;">
-    Также смотрите наши товары на <a href="https://www.avito.ru/brands/f5c84caaa2f9ea92cc17247b3e3eae48" target="_blank" style="color:#4da6ff;">Avito</a> или следите за мной на <a href="https://t.me/tsmaksim" target="_blank" style="color:#4da6ff;">Telegram</a>
+  <p>
+    Также смотрите товары на <a href="https://www.avito.ru/brands/f5c84caaa2f9ea92cc17247b3e3eae48" target="_blank" style="color:#4da6ff;">Avito</a> или следите за мной на <a href="https://t.me/tsmaksim" target="_blank" style="color:#4da6ff;">Telegram</a>
   </p>
 </section>
 
@@ -131,15 +143,12 @@
 </a>
 
 <script>
-  // Анимация при скролле
   function reveal() {
-    let cards = document.querySelectorAll('.product-card, .reason, .guide');
-    let windowHeight = window.innerHeight;
-    cards.forEach(el => {
-      let elementTop = el.getBoundingClientRect().top;
-      if(elementTop < windowHeight - 100) {
-        el.classList.add('visible');
-      }
+    let items = document.querySelectorAll('.product-card, .reason, .guide');
+    let windowH = window.innerHeight;
+    items.forEach(el => {
+      let top = el.getBoundingClientRect().top;
+      if(top < windowH - 100){ el.classList.add('visible'); }
     });
   }
   window.addEventListener('scroll', reveal);
