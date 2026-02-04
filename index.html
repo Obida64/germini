@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Максим • Ray-Ban • Garmin • Саратов</title>
-<link rel="icon" href="https://shop.sportsbasement.com/cdn/shop/files/100279435.51mm.CarbonGray.7.png?crop=center&height=800&v=1724786244&width=800" type="image/jpeg">
+<link rel="icon" href="https://www.firstflightbikes.com/cdn/shop/files/EC0333.jpg?v=1726387876" type="image/jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -16,22 +16,27 @@
   a { text-decoration:none; color:inherit; }
 
   /* Hero */
-  header { display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; text-align:center; background: linear-gradient(135deg, #0a0f23, #141b36); position:relative; overflow:hidden; }
+  header {
+    display:flex; flex-direction:column; justify-content:center; align-items:center;
+    min-height:100vh; text-align:center; position:relative; overflow:hidden;
+    background: linear-gradient(135deg, #0a0f23, #141b36);
+  }
   header::before {
     content:'';
     position:absolute; top:0; left:0; width:100%; height:100%;
     background: radial-gradient(circle at 50% 50%, rgba(77,166,255,0.2), transparent 70%);
-    animation: pulse 10s infinite alternate;
     z-index:0;
   }
-  @keyframes pulse { 0% {transform:scale(1);} 50% {transform:scale(1.2);} 100% {transform:scale(1);} }
-
-  header h1 { font-size:3rem; font-weight:700; margin-bottom:15px; z-index:1; position:relative; background: linear-gradient(90deg, #4da6ff, #ff7acc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-  header h2 { font-size:1.6rem; margin-bottom:20px; z-index:1; position:relative; color:#c0c0c0; }
+  .hero-bg {
+    position:absolute; top:0; left:0; width:100%; height:100%; background:url('https://contents.mediadecathlon.com/m21818599/k$f946d0c0493982b8284c5b904b46100c/rayban-meta-wayfarer-gen-1-black-g15-green-l-parallel-import-ray-ban-ac9c1362-e9db-4a7c-8ddc-24d7189430d0.jpg') center/cover no-repeat; 
+    transform:translateZ(0); will-change:transform; opacity:0.15; z-index:0;
+  }
+  header h1 { font-size:3rem; font-weight:700; margin-bottom:15px; z-index:1; position:relative; background: linear-gradient(90deg, #4da6ff, #ff7acc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; transition:0.3s; }
+  header h2 { font-size:1.6rem; margin-bottom:20px; z-index:1; position:relative; color:#c0c0c0; transition:0.3s; }
   .hero-text { font-size:1rem; color:#aaa; margin-bottom:25px; max-width:500px; z-index:1; position:relative; }
 
   header button { background:#4da6ff; color:#fff; border:none; padding:18px 40px; font-size:1.3rem; border-radius:15px; cursor:pointer; transition:0.3s; z-index:1; position:relative; }
-  header button:hover { background:#3c7ccc; }
+  header button:hover { background:#3c7ccc; transform:scale(1.05); }
 
   /* Products */
   section { padding:80px 20px; }
@@ -45,7 +50,7 @@
   .product-info h3 { font-size:1.2rem; margin-bottom:10px; }
   .product-info p { font-size:0.9rem; color:#aaa; }
 
-  /* Why Telegram */
+  /* Reasons */
   .reasons { display:flex; flex-direction:column; gap:15px; max-width:600px; margin:0 auto; }
   .reason { background:#1b2345; padding:25px; border-radius:15px; text-align:center; font-weight:500; font-size:1rem; transition:0.5s; opacity:0; transform:translateY(50px); }
   .reason.visible { opacity:1; transform:translateY(0); }
@@ -56,7 +61,21 @@
   .guide.visible { opacity:1; transform:translateY(0); }
 
   .guide-btn { display:block; margin:25px auto 0 auto; padding:18px 40px; font-size:1.3rem; border-radius:15px; background:#4da6ff; color:#fff; border:none; cursor:pointer; transition:0.3s; }
-  .guide-btn:hover { background:#3c7ccc; }
+  .guide-btn:hover { background:#3c7ccc; transform:scale(1.05); }
+
+  /* Reviews */
+  .reviews { max-width:700px; margin:80px auto; display:flex; flex-direction:column; gap:20px; }
+  .review { background:#1b2345; padding:20px 25px; border-radius:15px; opacity:0; transform:translateY(50px); transition:0.5s; }
+  .review.visible { opacity:1; transform:translateY(0); }
+  .review p { font-size:0.95rem; color:#ccc; }
+  .review span { display:block; margin-top:10px; font-size:0.85rem; color:#4da6ff; }
+
+  /* Scroll to top */
+  #toTop {
+    position:fixed; bottom:30px; right:30px; background:#4da6ff; color:#fff; padding:15px 20px; border-radius:50px; cursor:pointer; font-size:1rem; display:none; z-index:100;
+    transition:0.3s;
+  }
+  #toTop:hover { background:#3c7ccc; transform:scale(1.1); }
 
   /* Final CTA */
   .final-cta { text-align:center; padding:80px 20px; }
@@ -66,15 +85,16 @@
 
   footer { text-align:center; font-size:0.9rem; color:#777; padding:40px 20px; }
 
-  /* Sticky Telegram button */
   @media (max-width:768px) {
     .sticky-telegram { position:fixed; bottom:20px; right:20px; z-index:100; box-shadow:0 5px 20px rgba(0,0,0,0.4); }
   }
+
 </style>
 </head>
 <body>
 
 <header>
+  <div class="hero-bg"></div>
   <h1>Максим</h1>
   <h2>Ray-Ban • Garmin • Саратов</h2>
   <p class="hero-text">Гайды по настройке Ray-Ban Meta, инструкции и советы — всё в Telegram</p>
@@ -127,6 +147,21 @@
   </button>
 </section>
 
+<section class="reviews">
+  <div class="review">
+    <p>“Очень полезные гайды, очки работают отлично!”</p>
+    <span>— @user1</span>
+  </div>
+  <div class="review">
+    <p>“Поддержка быстро ответила и помогла с настройкой Ray-Ban Meta.”</p>
+    <span>— @user2</span>
+  </div>
+  <div class="review">
+    <p>“Рекомендую всем, всё безопасно и удобно.”</p>
+    <span>— @user3</span>
+  </div>
+</section>
+
 <section class="final-cta">
   <h2>Готовы к покупке?</h2>
   <button onclick="window.location.href='https://t.me/maxteamsell'">Перейти в Telegram</button>
@@ -143,9 +178,12 @@
   <button>Telegram</button>
 </a>
 
+<div id="toTop" onclick="window.scrollTo({top:0, behavior:'smooth'})">↑</div>
+
 <script>
+  // Reveal on scroll
   function reveal() {
-    let items = document.querySelectorAll('.product-card, .reason, .guide');
+    let items = document.querySelectorAll('.product-card, .reason, .guide, .review');
     let windowH = window.innerHeight;
     items.forEach(el => {
       let top = el.getBoundingClientRect().top;
@@ -154,6 +192,38 @@
   }
   window.addEventListener('scroll', reveal);
   window.addEventListener('load', reveal);
+
+  // Parallax hero
+  window.addEventListener('scroll', () => {
+    const hero = document.querySelector('.hero-bg');
+    hero.style.transform = `translateY(${window.scrollY * 0.2}px)`;
+  });
+
+  // Scroll-to-top button
+  const toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', () => {
+    if(window.scrollY > 400){ toTop.style.display = 'block'; }
+    else { toTop.style.display = 'none'; }
+  });
+
+  // Pop-up Telegram invite
+  setTimeout(() => {
+    const popup = document.createElement('div');
+    popup.style.position = 'fixed';
+    popup.style.bottom = '20px';
+    popup.style.left = '50%';
+    popup.style.transform = 'translateX(-50%)';
+    popup.style.background = '#4da6ff';
+    popup.style.color = '#fff';
+    popup.style.padding = '15px 25px';
+    popup.style.borderRadius = '15px';
+    popup.style.cursor = 'pointer';
+    popup.style.boxShadow = '0 5px 20px rgba(0,0,0,0.4)';
+    popup.innerText = 'Получить гайды в Telegram';
+    popup.onclick = () => { window.location.href='https://t.me/maxteamsell'; };
+    document.body.appendChild(popup);
+    setTimeout(()=>popup.remove(),10000);
+  },5000);
 </script>
 
 </body>
