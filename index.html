@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Максим • Ray-Ban • Garmin • Саратов</title>
+<link rel="icon" href="https://www.firstflightbikes.com/cdn/shop/files/EC0333.jpg?v=1726387876" type="image/jpeg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -53,8 +54,9 @@
   .guides { display:flex; flex-direction:column; gap:25px; max-width:600px; margin:0 auto; }
   .guide { background:#1b2345; padding:25px; border-radius:15px; opacity:0; transform:translateY(50px); transition:0.5s; }
   .guide.visible { opacity:1; transform:translateY(0); }
-  .guide a { display:inline-block; margin-top:10px; padding:12px 25px; background:#2b3b7c; border-radius:12px; transition:0.3s; }
-  .guide a:hover { background:#3c4d9c; }
+
+  .guide-btn { display:block; margin:25px auto 0 auto; padding:18px 40px; font-size:1.3rem; border-radius:15px; background:#4da6ff; color:#fff; border:none; cursor:pointer; transition:0.3s; }
+  .guide-btn:hover { background:#3c7ccc; }
 
   /* Final CTA */
   .final-cta { text-align:center; padding:80px 20px; }
@@ -114,14 +116,15 @@
     <div class="guide">
       <h3>Инструкция по установке</h3>
       <p>Подробная настройка и использование очков Ray-Ban Meta.</p>
-      <a href="#">Скачать APK</a>
     </div>
     <div class="guide">
       <h3>Гайд по функционалу</h3>
       <p>Все функции очков и советы по их использованию.</p>
-      <a href="#">Скачать APK</a>
     </div>
   </div>
+  <button class="guide-btn" onclick="window.location.href='https://t.me/maxteamsell'">
+    Все инструкции и APK в Telegram
+  </button>
 </section>
 
 <section class="final-cta">
