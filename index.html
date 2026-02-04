@@ -3,69 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Техника и гаджеты</title>
+<title>Магазин Максим — Ray-Ban • Garmin • Саратов</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
   html { scroll-behavior: smooth; }
-  body { background: #0a0f23; color: #fff; line-height: 1.5; }
-  a { text-decoration: none; color: inherit; }
-  header, section, footer { width: 100%; padding: 60px 20px; }
-  header { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; text-align: center; background: linear-gradient(135deg, #0a0f23, #141b36); }
-  h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 20px; }
-  h2 { font-size: 2rem; margin-bottom: 15px; }
-  p { font-size: 1rem; color: #c0c0c0; margin-bottom: 30px; max-width: 500px; }
-  button { background: #1d2a55; color: #fff; border: none; padding: 15px 30px; font-size: 1.2rem; border-radius: 12px; cursor: pointer; transition: background 0.3s; }
-  button:hover { background: #2b3b7c; }
-  .btn-primary { margin-bottom: 15px; }
-  .btn-secondary { background: #0a0f23; border: 1px solid #fff; }
-  .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; }
-  .product-card { background: #141b36; border-radius: 15px; overflow: hidden; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; }
-  .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-  .product-card img { width: 100%; display: block; }
-  .product-info { padding: 20px; }
-  .product-info h3 { font-size: 1.2rem; margin-bottom: 10px; }
-  .product-info p { font-size: 0.9rem; color: #aaa; }
-  .reasons { display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: 0 auto; }
-  .reason { background: #1b2345; padding: 20px; border-radius: 12px; text-align: center; }
-  .guides { display: flex; flex-direction: column; gap: 20px; max-width: 600px; margin: 0 auto; }
-  .guide { background: #1b2345; padding: 20px; border-radius: 12px; }
-  .guide a { display: inline-block; margin-top: 10px; padding: 10px 20px; background: #2b3b7c; border-radius: 10px; transition: background 0.3s; }
-  .guide a:hover { background: #3c4d9c; }
-  .final-cta { text-align: center; padding: 80px 20px; }
-  .final-cta button { font-size: 1.4rem; padding: 20px 40px; }
-  footer { text-align: center; font-size: 0.9rem; color: #777; padding: 40px 20px; }
-  @media (max-width: 768px) {
-    .sticky-telegram { position: fixed; bottom: 20px; right: 20px; z-index: 100; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+  body { background:#0a0f23; color:#fff; line-height:1.5; overflow-x:hidden; }
+
+  a { text-decoration:none; color:inherit; }
+
+  header, section, footer { width:100%; padding:60px 20px; }
+
+  /* Hero */
+  header { display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:100vh; text-align:center; background: linear-gradient(135deg, #0a0f23, #141b36); }
+  h1 { font-size:2.8rem; font-weight:700; margin-bottom:15px; background: linear-gradient(90deg, #4da6ff, #ff7acc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+  h2 { font-size:1.6rem; margin-bottom:25px; color:#c0c0c0; }
+  button { background:#1d2a55; color:#fff; border:none; padding:15px 30px; font-size:1.2rem; border-radius:12px; cursor:pointer; transition:0.3s; }
+  button:hover { background:#2b3b7c; }
+  .btn-primary { margin-bottom:15px; }
+  .btn-secondary { background:#0a0f23; border:1px solid #fff; }
+
+  /* Products */
+  .products { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px,1fr)); gap:20px; margin-top:40px; }
+  .product-card { background:#141b36; border-radius:15px; overflow:hidden; cursor:pointer; transition:0.5s; opacity:0; transform: translateY(40px); }
+  .product-card.visible { opacity:1; transform:translateY(0); }
+  .product-card:hover { transform:translateY(-5px); box-shadow:0 10px 30px rgba(0,0,0,0.5); }
+  .product-card img { width:100%; display:block; }
+  .product-info { padding:20px; }
+  .product-info h3 { font-size:1.2rem; margin-bottom:10px; }
+  .product-info p { font-size:0.9rem; color:#aaa; }
+
+  /* Why Telegram */
+  .reasons { display:flex; flex-direction:column; gap:15px; max-width:600px; margin:0 auto; }
+  .reason { background:#1b2345; padding:20px; border-radius:12px; text-align:center; transition:0.3s; opacity:0; transform: translateY(40px); }
+  .reason.visible { opacity:1; transform:translateY(0); }
+
+  /* Guides */
+  .guides { display:flex; flex-direction:column; gap:20px; max-width:600px; margin:0 auto; }
+  .guide { background:#1b2345; padding:20px; border-radius:12px; opacity:0; transform: translateY(40px); transition:0.5s; }
+  .guide.visible { opacity:1; transform:translateY(0); }
+  .guide a { display:inline-block; margin-top:10px; padding:10px 20px; background:#2b3b7c; border-radius:10px; transition:0.3s; }
+  .guide a:hover { background:#3c4d9c; }
+
+  /* Final CTA */
+  .final-cta { text-align:center; padding:80px 20px; }
+  .final-cta button { font-size:1.4rem; padding:20px 40px; }
+
+  footer { text-align:center; font-size:0.9rem; color:#777; padding:40px 20px; }
+
+  /* Sticky Telegram button */
+  @media (max-width:768px) {
+    .sticky-telegram { position:fixed; bottom:20px; right:20px; z-index:100; box-shadow:0 4px 15px rgba(0,0,0,0.3); }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Лучшие технологичные гаджеты</h1>
+  <h1>Магазин Максим</h1>
+  <h2>Ray-Ban • Garmin • Саратов</h2>
   <p>Все покупки и консультации — через Telegram</p>
   <button class="btn-primary" onclick="window.location.href='https://t.me/maxteamsell'">Перейти в Telegram</button>
   <button class="btn-secondary" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Смотреть товары</button>
 </header>
 
 <section id="products">
-  <h2 style="text-align:center; margin-bottom:40px;">Наши товары</h2>
+  <h2 style="text-align:center; margin-bottom:40px;">Наши топовые гаджеты</h2>
   <div class="products">
     <div class="product-card" onclick="window.location.href='https://t.me/maxteamsell'">
       <img src="https://contents.mediadecathlon.com/m21818599/k$f946d0c0493982b8284c5b904b46100c/rayban-meta-wayfarer-gen-1-black-g15-green-l-parallel-import-ray-ban-ac9c1362-e9db-4a7c-8ddc-24d7189430d0.jpg" alt="Ray-Ban Meta">
       <div class="product-info">
         <h3>Ray-Ban Meta</h3>
-        <p>Умные очки с камерой и ИИ. Отличный выбор для контента и повседневной жизни.</p>
+        <p>Умные очки с камерой и ИИ. Идеальны для контента и повседневной жизни.</p>
       </div>
     </div>
     <div class="product-card" onclick="window.location.href='https://t.me/maxteamsell'">
       <img src="https://contents.mediadecathlon.com/m21818599/k$f946d0c0493982b8284c5b904b46100c/rayban-meta-wayfarer-gen-1-black-g15-green-l-parallel-import-ray-ban-ac9c1362-e9db-4a7c-8ddc-24d7189430d0.jpg" alt="Ray-Ban Meta">
       <div class="product-info">
-        <h3>Ray-Ban Meta</h3>
-        <p>Умные очки с камерой и ИИ. Отличный выбор для контента и повседневной жизни.</p>
+        <h3>Garmin Smart</h3>
+        <p>Современные умные часы Garmin для спорта и повседневной жизни.</p>
       </div>
     </div>
   </div>
@@ -111,6 +129,22 @@
 <a href="https://t.me/maxteamsell" class="sticky-telegram">
   <button>Telegram</button>
 </a>
+
+<script>
+  // Анимация при скролле
+  function reveal() {
+    let cards = document.querySelectorAll('.product-card, .reason, .guide');
+    let windowHeight = window.innerHeight;
+    cards.forEach(el => {
+      let elementTop = el.getBoundingClientRect().top;
+      if(elementTop < windowHeight - 100) {
+        el.classList.add('visible');
+      }
+    });
+  }
+  window.addEventListener('scroll', reveal);
+  window.addEventListener('load', reveal);
+</script>
 
 </body>
 </html>
